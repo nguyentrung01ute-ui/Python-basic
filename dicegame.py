@@ -44,20 +44,25 @@ dice_art = {
 }
 
 def PaytoWin(money) :
-    tiennap = int(input("ban muon nap bao nhieu: "))
+    tiennap = int(input("ban muon nap bao nhieu: $"))
     print(f"so du moi cua ban la: {tiennap + money}")
     return tiennap + money
 
 money = 0
 print("pay your money to me")
-PaytoWin(money)
+money = PaytoWin(money)
 
 while True:
+    T = False # false neu la xiu
+    tien_cuoc = float(input("Tien dat cuoc: $"))
+    while(tien_cuoc < 0 or tien_cuoc > money):
+        print("Tien dat cuoc khong hop le")
+        tien_cuoc = float(input("Tien dat cuoc: $"))
     dice = []
     total = 0
-    numbers_of_dice = int(input("How many dice do you want? "))
-
-    for die in range(numbers_of_dice):
+    #numbers_of_dice = int(input("How many dice do you want? "))
+    choose_tai_xiu = input("choose tai xiu: ").lower().strip()
+    for die in range(3):
         dice.append(random.randint(1, 6))
 
     # for die in range(numbers_of_dice):
@@ -71,7 +76,18 @@ while True:
 
     for dice in dice:
         total += dice
-    print(f"total {total}")
+
+    print(f"total {total} -> {"Tai" if total > 10 else "Xiu"}")
+    if (choose_tai_xiu == "tai" and total > 10) or (choose_tai_xiu == "xiu" and total <= 10):
+        print(f"Chuc mung ban! -> ban nhan duoc {tien_cuoc}$ vao tai khoan")
+        money += tien_cuoc
+        print(f"tien cua ban hien tai la {money}")
+    else:
+        print(f"xin chia buon cung ban! tai khoan cua ban -{tien_cuoc}$")
+        tien_cuoc -= tien_cuoc
+        print(f"tien cua ban hien tai la {money}")
+
+
     choice = input("Press any key to continue...(y/n): ").lower().strip()
     if choice != "y": break
 
