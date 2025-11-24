@@ -43,6 +43,15 @@ dice_art = {
         "└─────────┘"),
 }
 
+def PaytoWin(money) :
+    tiennap = int(input("ban muon nap bao nhieu: "))
+    print(f"so du moi cua ban la: {tiennap + money}")
+    return tiennap + money
+
+money = 0
+print("pay your money to me")
+PaytoWin(money)
+
 while True:
     dice = []
     total = 0
