@@ -84,7 +84,7 @@ while True:
         print(f"tien cua ban hien tai la {money}")
     else:
         print(f"xin chia buon cung ban! tai khoan cua ban -{tien_cuoc}$")
-        tien_cuoc -= tien_cuoc
+        money -= tien_cuoc
         print(f"tien cua ban hien tai la {money}")
 
 
