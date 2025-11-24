@@ -58,27 +58,31 @@ while True:
     while(tien_cuoc < 0 or tien_cuoc > money):
         print("Tien dat cuoc khong hop le")
         tien_cuoc = float(input("Tien dat cuoc: $"))
-    dice = []
+    dices = []
     total = 0
     #numbers_of_dice = int(input("How many dice do you want? "))
     choose_tai_xiu = input("choose tai xiu: ").lower().strip()
     for die in range(3):
-        dice.append(random.randint(1, 6))
+        dices.append(random.randint(1, 6))
 
     # for die in range(numbers_of_dice):
     #     for line in dice_art.get(dice[die]):
     #         print(line)
 
     for line in range(5):
-        for die in dice:
-            print(dice_art.get(die)[line], end="")
+        for dice in dices:
+            print(dice_art.get(dice)[line], end="")
         print()
 
-    for dice in dice:
+    for dice in dices:
         total += dice
+    if total > 10:
+        nha_cai_choose = "tai"
+    else:
+        nha_cai_choose = "xiu"
 
-    print(f"total {total} -> {"Tai" if total > 10 else "Xiu"}")
-    if (choose_tai_xiu == "tai" and total > 10) or (choose_tai_xiu == "xiu" and total <= 10):
+    print(f"total {total} -> {nha_cai_choose}")
+    if (choose_tai_xiu == nha_cai_choose):
         print(f"Chuc mung ban! -> ban nhan duoc {tien_cuoc}$ vao tai khoan")
         money += tien_cuoc
         print(f"tien cua ban hien tai la {money}")
